@@ -1,0 +1,38 @@
+@import '/src/style/index.scss';
+
+#minimenu {
+    width: 100%;
+    height: auto;
+    background-color: var(--colorText);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+
+    .menu-content {
+        max-width: $maxScreen;
+        width: 100%;
+        padding: 50px $paddingContent 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                height: 32px;
+                
+                .st0 {
+                    fill: white;
+                }
+            
+                .st1 {
+                    fill: var(--colorH);
+                }
+            }
+        }
+    }
+}

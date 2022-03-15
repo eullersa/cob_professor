@@ -1,0 +1,124 @@
+.subjectButton {
+    
+    // stop transition
+
+    &.hovered.errorTransition {
+        transition: none!important;
+        &::after {
+            transition: none!important;
+        }
+    }
+
+    &.errorTransition {
+        transition: none!important;
+        &::after {
+            transition: none!important;
+        }
+    }
+    
+    // button properties (not modify)
+
+    transition: all 0.6s ease; // transition with delay
+    font-weight: 500;
+    cursor: grab;
+    height: 100%;
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 17px;
+    position: relative;
+    overflow: hidden;
+    color: var(--colorH);
+
+    // ball properties (not modify)
+
+    &::after {
+        transition: all 0.6s ease; // transition with delay
+        z-index: -1;
+        content: '';
+        background-color: var(--buttonText);
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        right: -60px;
+        transform: scale(1);
+    }
+
+    // function hover animation effect
+
+    &.hovered {
+
+        &:hover {
+            color: var(--buttonColor);
+            &::after {
+                transform: scale(16);
+                background-color: var(--buttonText);
+                opacity: 1;
+            }
+        }
+
+        // text color animation effect
+
+        animation-name: textAnimation;
+        animation-duration: 0.6s;
+        animation-timing-function: ease;
+        animation-play-state: running;
+
+        // text color transition effect
+
+        color: var(--buttonColor);
+
+        &::after {
+
+            // ball animation effect
+
+            animation-name: ballAnimation;
+            animation-duration: 0.6s;
+            animation-timing-function: ease;
+            animation-play-state: running;
+
+            // ball transition effect
+
+            transform: scale(16);
+            background-color: var(--buttonText);
+            opacity: 1;
+
+        }
+    }    
+
+    &:hover {
+        color: var(--buttonColor);
+        &::after {
+            transform: scale(16);
+            background-color: var(--buttonText);
+            opacity: 1;
+        }
+    }
+
+    // in hover, the ball wil get this animation
+
+    @keyframes ballAnimation {
+        from {
+            transform: scale(1);
+            background-color: var(--colorBackground);
+            opacity: 0;
+        }
+        to {
+            transform: scale(16);
+            background-color: var(--buttonText);
+            opacity: 1;
+        }
+    }
+
+    @keyframes textAnimation {
+        from {
+            color: var(--colorH);
+        }
+        to {
+            color: var(--buttonColor);
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@import '/src/style/index.scss';
+@import './index.scss';
+
+@mixin border($color) {
+    box-shadow: 0 0 0px 2px $color;
+    -webkit-box-shadow: 0 0 0px 2px $color;
+    -moz-box-shadow: 0 0 0px 2px $color;
+}
+
+.offer {
+    padding: 50px 50px;
+    max-width: 365px;
+    width: 100%;
+    background-color: var(--grayCard);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: $transitionEffect;
+
+    //default
+    @include border(#ffffff00);
+
+    &:hover, &.selected {
+        @include border(var(--colorTextLight));
+        background-color: var(--cardHover);
+        cursor: pointer;
+        transition: $transitionEffect;
+    }
+    .offerContent {
+
+        h6 {
+            margin-bottom: 1.4rem;
+            font-weight: 600;
+            color: var(--colorTextLight);
+            font-size: 1.18rem;
+        }
+
+        // reset
+
+        p {
+            margin-bottom: 0;
+            line-height: $pSpacing;
+        }
+    }
+}

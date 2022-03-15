@@ -1,0 +1,353 @@
+@import '/src/style/index.scss';
+
+#weoffer {
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // padding the bottom and top
+    padding-top: 70px;
+    padding-bottom: 70px;
+    height: auto;
+
+    .weofferContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: calc(#{$maxScreen} - (#{$paddingContent} * 2));
+        position: relative;
+
+        & > .titlesection {
+            position: absolute;
+            top: 32px;
+            left: 5px;
+            right: inherit;
+            bottom: inherit;
+            z-index: 100000;
+            width: 310px;
+
+            &.secondary {
+                top: inherit;
+                left: inherit;
+                right: 0;
+                bottom: 30px;
+            }
+
+            & > h5 {
+                font-weight: 700;
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+                padding: 0;
+                margin: 0;
+                margin-bottom: 15px;
+            }
+
+            & > p {
+                font-size: 0.9rem;
+                line-height: $pSpacing;
+            }
+        }
+
+        p {
+            font-size: 0.88rem;
+        }
+
+        .hiddenEffects {
+
+        // setup height size to "BottomHeight" effect
+
+        $heightSize: 254px;
+
+        // translate offer
+
+        $yTranslate: 23px;
+        $xTranslate: 395px;
+        $bottomHeight: -100px;
+        $marginH: 20px;
+        $marginW: 30px;
+        $wings: 26px;
+
+        // hover transition translate
+
+        $hoverTranslate: 10px;
+
+        // fixing hidden effect
+
+        $padding: 10px;
+
+        // hidden Properties
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: hidden;
+        padding-bottom: $padding;
+        padding-top: $padding;
+        width: 100%;
+
+        // verifying statements
+
+        @if $yTranslate >= 0 {
+            padding-bottom: calc(#{$yTranslate} + #{$padding});
+        } @else {
+            padding-top: calc((#{$yTranslate} * -1) + #{$padding});
+        }
+
+            .offers {
+
+                @if $bottomHeight >= 0 {
+                    padding-bottom: calc(#{$bottomHeight});
+                } @else {
+                    height: calc(
+                        (3 * #{$marginH}) +
+                        (2 * #{$heightSize}) -
+                        (-1 * #{$bottomHeight})
+                    );
+                }
+
+                // offers properties
+
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 930px;
+
+                // translate to center
+                
+                transform: translate(calc(#{$xTranslate} / 2), 0);
+                transition: $transitionEffect;
+        
+                .offer {            
+                    margin: $marginH $marginW;
+
+                    &.selected:hover {
+                        transform: none!important;
+                    }
+
+                    &:nth-child(1) {
+                        z-index: 0;
+                        transform: translate(0, 0);
+                        margin-top: 0;
+
+                        &:hover {
+                            transform: translate(0, calc(#{$hoverTranslate}));
+                        }
+                    }
+                    &:nth-child(2) {
+                        z-index: 0;
+                        transform: translate(0, calc(#{$yTranslate} + #{$wings}));
+                        margin-top: 0;
+                        
+                        &:hover {
+                            transform: translate(0, calc(#{$yTranslate} + #{$wings} - #{$hoverTranslate}));
+                        }
+                    }
+                    &:nth-child(3) {
+                        z-index: -500;
+                        transform: translate(-($xTranslate), calc(#{$bottomHeight} - #{$wings}));
+                        margin-bottom: 0;
+                        
+                        &:hover {
+                            transform: translate(-($xTranslate), calc(#{$bottomHeight} - #{$wings} - #{$hoverTranslate}));
+                        }
+                    }
+                    &:nth-child(4) {
+                        z-index: 0;
+                        transform: translate(-($xTranslate), calc(#{$yTranslate} + #{$bottomHeight}));
+                        margin-bottom: 0;
+                        
+                        &:hover {
+                            transform: translate(-($xTranslate), calc(#{$yTranslate} + #{$bottomHeight} - #{$hoverTranslate}));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: $maxScreen) {
+
+        .weofferContent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            padding-left: $paddingContent;
+            padding-right: $paddingContent;
+
+            & > .titlesection {
+                position:initial;
+                width: 100%;
+                max-width: 370px;
+                text-align: center;
+    
+                &.secondary {
+                    top: inherit;
+                    left: inherit;
+                    right: inherit;
+                    bottom: inherit;
+                }
+    
+                & > h5 {
+                    font-weight: 700;
+                    font-size: 1.8rem;
+                    margin-bottom: 40px;
+                    padding: 0;
+                    margin: 0;
+                    margin-bottom: 15px;
+                }
+    
+                & > p {
+                    font-size: 0.9rem;
+                    line-height: $pSpacing;
+                }
+            }
+    
+            .hiddenEffects {
+    
+                .offers {
+                    
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                height: auto;
+                width: 100%;
+
+                // translate to center
+                
+                transform: none;
+                transition: none;
+            
+                    .offer {
+
+                        .offerContent {
+
+                            h6 {
+                                font-size: 1.2rem;
+                            }
+                    
+                            // reset
+                    
+                            p {
+                                font-size: 0.95rem;
+                            }
+                        }
+
+                        margin: 0px;
+                        max-width: 400px;
+                        width: 100%;
+    
+                        &.selected:hover {
+                            transform: none!important;
+                        }
+    
+                        &:nth-child(1) {
+                            z-index: 0;
+                            transform: none;
+                            margin: 13px;
+    
+                            &:hover {
+                                transform: none;
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            z-index: 0;
+                            transform: none;
+                            margin: 13px;
+                            
+                            &:hover {
+                                transform: none;
+                            }
+                        }
+                        &:nth-child(3) {
+                            z-index: 0;
+                            transform: none;
+                            margin: 13px;
+                            
+                            &:hover {                               
+                                transform: none;
+                            }
+                        }
+                        &:nth-child(4) {
+                            z-index: 0;
+                            transform: none;
+                            margin: 13px;
+                            
+                            &:hover {
+                                transform: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    @media (max-width: 1050px) {
+        .weofferContent {
+            max-width: 850px;
+    
+            .hiddenEffects {
+    
+                .offers {
+            
+                    .offer {
+                        padding: 36px 30px;
+                        margin: 0px;
+                        max-width: 340px;
+                        width: 100%;
+
+                        &:nth-child(1) {
+                            margin: 13px 15px 13px 2px;
+                        }
+                        &:nth-child(2) {
+                            margin: 13px 2px;
+                        }
+                        &:nth-child(3) {
+                            margin: 13px 15px 13px 2px;
+                        }
+                        &:nth-child(4) {
+                            margin: 13px 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 805px) {
+        .weofferContent {
+            max-width: 700px;
+    
+            .hiddenEffects {
+    
+                .offers {
+                    width: 100%;
+            
+                    .offer {
+
+                        &:nth-child(1) {
+                            margin: 13px;
+                        }
+                        &:nth-child(2) {
+                            margin: 13px;
+                        }
+                        &:nth-child(3) {
+                            margin: 13px;
+                        }
+                        &:nth-child(4) {
+                            margin: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

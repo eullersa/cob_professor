@@ -1,0 +1,567 @@
+@import '/src/style/index.scss';
+
+.background {
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    z-index: -9000000;
+}
+
+.writeAnswer {
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease opacity, 0.5s ease visibility;
+    width: auto;
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        transition: 0.5s ease opacity, 0.5s ease visibility;
+    }
+
+    .inputAnswer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        input {
+            border: hidden;
+            border-bottom: 3px solid var(--colorTextLight);
+            width: calc(100% + 9px);
+            flex: 1 1 calc(100% + 9px);
+            background-color: inherit;
+            color: var(--colorH);
+            transition: 0.25s ease border-color, 0.25s ease color;
+            // max-width: 300px;
+
+            &.wrong {
+                animation-name: wrong;
+                animation-duration: .85s;
+                animation-fill-mode:forwards;
+                animation-timing-function: ease;
+                animation-iteration-count: 1;
+                animation-play-state:running;
+
+                &:disabled {
+                    color: var(--colorMute);
+                }
+    
+                @keyframes wrong {
+                    0% {
+                        border-color: var(--colorTextLight);
+                    }
+                    30%, 100% {
+                        border-color: var(--wrongAnswer);
+                    }
+                }
+            }
+
+            &.correct {
+                border-color: var(--rightAnswer);
+                color: var(--rightAnswer);
+                transition: 0.25s ease border-color, 0.25s ease color;
+            }
+    
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    align-self: center;
+    justify-self: center;
+}
+
+.youtube {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+    .title {
+        width: 100%;
+        text-align: center;
+        font-weight: 600;
+        font-size: 21px;
+        margin-bottom: 20px;
+    }
+
+    .ytButton {
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        justify-content: flex-end;
+        transition: 0.5s ease opacity, 0.5s ease visibility;
+
+        &.open {
+            opacity: 1;
+            visibility: visible;
+            transition: 0.5s ease opacity, 0.5s ease visibility;
+        }
+
+        .button {
+            flex: 0 0 auto;
+            width: auto;
+            display: inline-flex;
+            align-items: center;
+            font-size: 17px;
+            font-weight: 600;
+            padding: 10px 20px 10px 10px;
+            background-color: var(--choice);
+            margin-top: 5px;
+            border-radius: 35px 0 0 35px;
+            color: var(--colorH);
+            transition: 0.25s ease color, 0.25s ease background-color;
+            border: 2px solid var(--grayCard);
+            justify-content: flex-end;
+
+            &:disabled {
+                color: var(--ballChoice);
+                transition: 0.25s ease color, 0.25s ease background-color;
+                .inner {
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    top: 50%;
+                    width: 13px;
+                    height: 13px;
+                    border-radius: 100%;
+                    background-color: var(--ballChoice);
+                    z-index: 1000;
+                }
+
+                .bar {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    border-radius: 100%;
+                    clip: rect(0px, 20px, 20px, 10px)
+                }
+
+                .circle .bar .progressCircle {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    background-color: var(--rightAnswer);
+                    border-radius: 100%;
+                    clip: rect(0px, 10px, 20px, 0px);
+                }
+
+                .circle .right .progressCircle {
+                    animation-fill-mode: both;
+                    animation-timing-function: linear;
+                    animation-name: right;
+                    z-index: 10;
+                }
+
+                @keyframes right {
+                    100% {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                .bar.left {
+                    transform: rotate(180deg);
+                }
+
+                .circle .left .progressCircle {
+                    animation-fill-mode: both;
+                    animation-timing-function: linear;
+                    animation-name: left;
+                    animation-delay: 4s;
+                    z-index: 10;
+                }
+
+                @keyframes left {
+                    100% {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        
+            .ball {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background-color: var(--ballChoice);
+                border-radius: 100%;
+                margin-right: 10px;
+                transition: 0.25s ease background-color;
+                position: relative;
+            }
+        }
+    }
+
+}
+
+.lesson-answer {
+    background-color: var(--bottomLesson);
+    position: fixed;
+    height: auto;
+    width: 100%;
+    border-top: 3px solid var(--grayCard);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0px;
+    transform: translateY(85px);
+    transition: 0.25s ease transform;
+    z-index: 1;
+    left: 0;
+    justify-content: center;
+
+    &.show {
+        transform: translateY(0);
+        transition: 0.25s ease transform;
+    }
+
+    .lesson-items {
+        max-width: calc(#{$maxScreen} - 280px);
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 0px 30px;
+
+        .message {
+            color: var(--colorH);
+
+            &.wrong {
+                color: var(--colorH);
+            }
+        }
+
+        .button {
+            color: var(--lessonButtonText);
+            background-color: var(--lessonButtonBackColor);
+            padding: 10px 20px;
+            border-radius: 70px;
+        }
+    }
+
+    @media (max-width: 620px) {
+    }
+}
+
+#lesson {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 110px;
+
+    .menu-bar {
+        height: 82px;
+        width: 100%;
+    }
+
+    .lesson-bar {
+        z-index: 100000;
+        background-color: var(--barLesson);
+        height: 80px;
+        width: 100%;
+        border-bottom: 2px solid var(--grayCard);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+
+        .lesson-items {
+            height: 54px;
+            max-width: $maxScreen;
+            width: 100%;
+            padding: 0 30px 10px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 78px;
+
+            a {
+                .fas {
+                    font-size: 22px;
+                    transform: translateY(8px);
+                    color: var(--colorMute);
+                }
+            }
+
+            .logo {
+                width: 110px;
+                top: 13px;
+                left: 10px;
+                transform: translateY(5px);
+                svg {
+                    height: 32px;
+                    
+                    .st0 {
+                        fill: var(--colorTextLight);
+                    }
+                
+                    .st1 {
+                        fill: var(--colorMute);
+                    }
+                }
+            }
+            .bar {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: flex-end;
+
+                .lesson-progress {
+                    $marginDefault: 30px;
+                    background-color: var(--barProgress);
+                    height: 12px;
+                    width: 100%;
+                    border-radius: 100px;
+                    overflow: hidden;
+
+                    .progressing {
+                        background-color: var(--rightAnswer);
+                        height: 12px;
+                        border-radius: 100px;
+                    }
+                }
+
+                .count {
+                    width: 80px;
+                    text-align: end;
+                    font-weight: 700;
+                    transform: translateY(7px);
+
+                    span {
+                        display: inline-block;
+                        font-size: 12px;
+                        transform: translateY(-1px);
+                        font-weight: 800;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 620px) {
+            .lesson-items {
+                gap: 40px;
+
+                .logo {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .lesson-bottom {
+        background-color: var(--bottomLesson);
+        position: fixed;
+        height: auto;
+        width: 100%;
+        border-top: 3px solid var(--grayCard);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0px;
+        transform: translateY(85px);
+        transition: 0.25s ease transform;
+        z-index: 1000;
+
+        &.show {
+            transform: translateY(0);
+            transition: 0.25s ease transform;
+        }
+
+        .lesson-items {
+            max-width: calc(#{$maxScreen} - 280px);
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 0px 30px;
+
+            .message {
+                color: var(--colorH);
+
+                &.wrong {
+                    color: var(--colorH);
+                }
+            }
+
+            .button {
+                color: var(--lessonButtonText);
+                background-color: var(--lessonButtonBackColor);
+                padding: 10px 20px;
+                border-radius: 70px;
+            }
+        }
+
+        @media (max-width: 620px) {
+        }
+    }
+
+    .questions {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 30px;
+        position: relative;
+
+        .logo-congratulations {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            .logo {
+                margin-top:17px;
+                margin-right:11px;
+                width: 110px;
+                transform: translateY(5px);            
+                svg {
+                    height: 32px;
+                    
+                    .st0 {
+                        fill: var(--colorTextLight);
+                    }
+                
+                    .st1 {
+                        fill: var(--colorMute);
+                    }
+                }
+            }
+        }
+
+        .congratulations {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 17px;
+            padding-bottom: 80px;
+
+            .image {
+                width: 120px;
+                height: 120px;
+                background-size: cover;
+                margin-bottom: 30px;
+                @include betterImage;
+            }
+
+            .title {
+                font-size: 22px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            .description {
+                font-size: 17px;
+                font-weight: 600;
+                color: var(--colorMute);
+
+                span.points {
+                    color: var(--rightAnswer);
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .multipleChoice {
+            margin-top: 55px;
+            height: 100%;
+            width: 600px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .title {
+                width: 100%;
+                text-align: center;
+                font-weight: 600;
+                font-size: 21px;
+                margin-bottom: 30px;
+            }
+    
+            .description {
+                font-size: 17px;
+                margin-bottom: 30px;
+                line-height: 28px;
+            }
+
+            .choices {
+                display: flex;
+                flex-direction: column;
+                width: auto;
+
+                .choice {
+                    flex: 0 0 auto;
+                    width: auto;
+                    display: flex;
+                    align-items: center;
+                    font-size: 17px;
+                    font-weight: 600;
+                    padding: 10px 20px 10px 10px;
+                    background-color: var(--choice);
+                    margin-top: 10px;
+                    border-radius: 35px;
+                    color: var(--colorH);
+                    transition: 0.25s ease color, 0.25s ease background-color;
+                    cursor: pointer;
+                    border: 2px solid var(--grayCard);
+
+                    .ball {
+                        flex: 0 0 15px;
+                        display: inline-block;
+                        width: 15px;
+                        height: 15px;
+                        background-color: var(--ballChoice);
+                        border-radius: 100px;
+                        margin-right: 10px;
+                        transition: 0.25s ease background-color;
+                    }
+
+                    &.correct {
+                        color: white;
+                        background-color: var(--rightAnswer);
+                        transition: 0.25s ease color, 0.25s ease background-color;
+                        .ball {
+                            background-color: white;
+                            transition: 0.25s ease background-color;
+                        }
+                    }
+
+                    &.wrong {
+                        color: white;
+                        background-color: var(--wrongAnswer);
+                        transition: 0.25s ease color, 0.25s ease background-color;
+                        .ball {
+                            background-color: white;
+                            transition: 0.25s ease background-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

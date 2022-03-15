@@ -1,0 +1,219 @@
+@import '/src/style/index.scss';
+
+#shop {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 30px;
+    
+    .text {
+        font-size: 25px;
+        padding: 25px 0 35px 0;
+        color: white;
+        font-weight: 600;
+
+        &.changeForm {
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+    }
+    .card {
+        text-align:left;
+        max-width: 450px;
+        width: 100%;
+        border: none;
+        padding: 40px 30px;
+        border-radius: 10px;
+        background: var(--colorBackground);    
+
+        &.qrCode {
+            padding: 0;
+            border-radius: 10px;
+        }        
+    }
+
+    a.card-text {
+        color: var(--colorMute);
+        margin-bottom: 30px;
+        display: block;
+
+        &.last {
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+    }
+
+    input {
+        transition: 0.2s ease box-shadow, 0.2s ease border;
+    }
+
+    input:focus {
+        transition: 0.2s ease box-shadow, 0.2s ease border;
+        box-shadow: 0px 0 0 3px var(--colorTextOp);
+        border: 1px solid var(--colorText)
+    }
+
+    .form-control {
+        padding-left: 42px;
+        margin-bottom: 22px;
+        margin-top: 12px;
+        font-size: 1rem;
+        font-weight: 500;
+        position: relative;
+        background: var(--input);
+        border: 1px solid var(--inputBorder);
+        color: var(--colorH);
+        
+        &.last {
+            margin-bottom: 18px;            
+        }
+    }
+    
+    i {
+        font-size: 1.25rem;
+        position: absolute;
+        z-index: 150;
+        padding-left: 12px;
+        padding-top: 9px;
+        opacity: 0.8;
+
+        &.fa-lock {
+            padding-left: 14px;
+        }
+    }
+
+    .btn-form {
+        color: var(--colorBackground);
+        background-color: var(--colorTextLight);
+        width: 100%;
+        margin-top: 15px;
+        font-weight: 600;
+    }
+
+    .btn-form:hover {
+        background-color: var(--colorTextHover);
+    }
+
+    a.link {
+        color:inherit;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .card-text {
+        text-align: center;
+        margin-bottom: 18px;
+    }
+
+    .card-title {
+        text-align: center;
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--colorH);
+        margin-bottom: 14px;
+    }
+
+    .priceText {
+        text-align: center;
+        margin-bottom: 14px;
+        font-size: 27px;
+        font-weight: 600;
+        .priceValue {
+            font-weight: 700;
+            color: var(--colorTextLight);
+        }
+    }
+
+    .form-group:last-of-type {
+        .form-control {
+            margin-bottom: 14px;
+        }
+    }
+
+    .imageQr {
+        position: relative;
+        
+    
+        .qrCodeImg {
+            border-radius: 10px;
+        }
+
+        .overImage {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: gray;
+            opacity: 0.5;
+            top: 0;
+            border-radius: 10px;
+            z-index: 1000000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+    
+            &.show {
+                display: flex;
+            }
+    
+            .spinner-border {
+                z-index: 1000;
+                color: black!important;
+            }
+        }
+
+    }
+
+    .months {
+        display: flex;
+        justify-content: center;
+
+        .month {
+            margin: 0 7px;
+            font-weight: 600;
+            background-color: var(--graySimple);
+            padding: 8px 13px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            cursor: pointer;
+
+            &.clicked {
+                background-color: var(--colorTextLight);
+                color: var(--colorBackground);
+            }
+        }
+    }
+    .card {
+        position: relative;
+    }
+
+    .loading {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: gray;
+        opacity: 0.5;
+        top: 0;
+        left: 0%;
+        right: 50%;
+        bottom: 0;
+        border-radius: 10px;
+        z-index: 10;
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        &.show {
+            display: flex;
+        }
+
+        .spinner-border {
+            z-index: 1000;
+            color: black!important;
+        }
+    }
+
+}

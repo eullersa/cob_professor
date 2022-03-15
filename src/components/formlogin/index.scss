@@ -1,0 +1,130 @@
+@import '/src/style/index.scss';
+
+#form {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px 0 20px;
+    span {
+        font-size: 25px;
+        padding: 25px 0 45px 0;
+        color: white;
+        font-weight: 600;
+
+        &.changeForm {
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+    }
+    .card {
+        text-align:left;
+        max-width: 450px;
+        width: 100%;
+        border: none;
+        padding: 34px 30px;
+        border-radius: 10px;
+        position: relative;
+        background: var(--backgroundCard);
+    }
+
+    .loading {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: gray;
+        opacity: 0.5;
+        top: 0;
+        left: 0%;
+        right: 50%;
+        bottom: 0;
+        border-radius: 10px;
+        z-index: 10;
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        &.show {
+            display: flex;
+        }
+
+        .spinner-border {
+            z-index: 1000;
+            color: black!important;
+        }
+    }
+
+    p.card-text {
+        color: var(--colorP);
+    }
+
+    a.card-text {
+        color: var(--colorP);
+        margin-bottom: 30px;
+        display: block;
+
+        &.last {
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+    }
+
+    input {
+        background-color: var(--colorText);
+        color: var(--colorH);
+        transition: 0.2s ease box-shadow, 0.2s ease border;
+    }
+
+    input:focus {
+        transition: 0.2s ease box-shadow, 0.2s ease border;
+        box-shadow: 0px 0 0 3px var(--colorTextOp);
+        border: 1px solid var(--colorText)
+    }
+
+    .form-control {
+        padding-left: 42px;
+        margin-bottom: 22px;
+        margin-top: 12px;
+        font-size: 1rem;
+        font-weight: 500;
+        position: relative;
+        background-color: var(--input);
+        
+        &.last {
+            margin-bottom: 22px;            
+        }
+    }
+    
+    i {
+        font-size: 1.25rem;
+        position: absolute;
+        z-index: 150;
+        padding-left: 12px;
+        padding-top: 9px;
+        opacity: 0.8;
+
+        &.fa-lock {
+            padding-left: 14px;
+        }
+
+        &.fa-user {
+            padding-left: 14px;
+        }
+    }
+
+    .btn-form {
+        color: white;
+        background-color: var(--colorText);
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .btn-form:hover {
+        background-color: var(--colorTextHover);
+    }
+
+    a.link {
+        color:inherit;
+    }
+}

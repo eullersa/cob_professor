@@ -1,0 +1,87 @@
+@import '/src/style/index.scss';
+@import './buttonsEffect.scss';
+
+#subjects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--grayComponent);
+    padding: 65px 50px;
+    .buttonsGroup {
+        max-width: calc(#{$maxScreen} - (#{$paddingContent} * 2));
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .swiperimg {
+            width: 25px;
+            margin-top: -3px;
+        }
+
+        .swiperText {
+            margin-left: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .pagButtons {
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            $spacingDirections: 15px;
+
+            &.prev {
+                margin-right: $spacingDirections;
+            }
+
+            &.next {
+                margin-left: $spacingDirections;
+            }
+        }
+    }    
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+
+        // 6 ÍCONES
+
+        width: calc(1 / 6 * 100%)!important;
+
+        // 5 ÍCONES
+
+        @media (max-width: 990px) {
+            width: calc(1 / 5 * 100%)!important;
+        }
+
+        // 4 ÍCONES
+
+        @media (max-width: 865px) {
+            width: calc(1 / 4 * 100%)!important;
+        }
+
+        // 3 ÍCONES
+
+        @media (max-width: 720px) {
+            width: calc(1 / 3 * 100%)!important;
+        }
+
+        // 2 ÍCONES
+
+        @media (max-width: 575px) {
+            width: calc(1 / 2 * 100%)!important;
+        }
+
+        // 1 ÍCONES
+
+        @media (max-width: 430px) {
+            width: calc(1 / 1 * 100%)!important;
+        }
+    }
+    @media (max-width: 430px) {
+        padding: 65px 30px;
+    }
+}

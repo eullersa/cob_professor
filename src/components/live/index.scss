@@ -1,0 +1,111 @@
+@import '/src/style/index.scss';
+
+#live {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 30px;
+    overflow: hidden;
+    
+    .text {
+        font-size: 25px;
+        padding: 25px 0 35px 0;
+        color: white;
+        font-weight: 600;
+
+        &.changeForm {
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+    }
+
+    .link {
+        width: 100%;
+        height: calc(100vh - 300px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 70px;
+
+        .platform {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                width: 80px;
+                @include betterImage;
+            }
+
+            span {
+                margin: 10px 0 18px;
+                color: white;
+                font-weight: 500;
+            }
+
+            .copyLink {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+
+                .linkPlatform {
+                    color: var(--linkLive);
+                    text-decoration: none;
+                    width: 100%;
+                    background-color: rgba(255, 255, 255, 0.85);
+                    text-align: start;
+                    padding: 6px 10px;
+                    border-radius: 7px;
+                    border: 2px solid var(--colorTextHover);
+                    display: block;
+                }
+
+                .fas {
+                    font-size: 22px;
+                    color: white;
+                }
+
+                .copy {
+                    position: relative;
+                    transition: 0.25s ease opacity;
+
+                    .copyMessage {
+                        visibility: hidden;
+                        opacity: 0;
+                        position: absolute;
+                        top: -43px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        font-size: 15px;
+                        width: 100px;
+                        border-radius: 6px;
+                        background-color: white;
+                        padding: 5px 6px;
+                        font-weight: 600;
+                        color: var(--colorText);
+                        border: 2px solid var(--grayCard);
+                        box-sizing: border-box;
+                        transition: 0.25s ease opacity, 0.25s ease visibility;
+                    }
+
+                    .copyMessage.copied {
+                        border: 2px solid white;
+                        background-color: var(--rightAnswer);
+                        color: white;
+                    }
+
+                    &:hover .copyMessage {
+                        visibility: visible;
+                        opacity: 1;
+                        transition: 0.25s ease opacity, 0.25s ease visibility;
+                    }
+                }
+            }
+
+        }
+    }
+}

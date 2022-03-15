@@ -1,0 +1,159 @@
+@import '/src/style/index.scss';
+
+#progress {
+
+    .progressCard {
+        border-radius: 10px;
+        width: 365px;
+        padding: 40px 30px;
+        border: 2px solid var(--colorText);
+        margin-bottom: 20px;
+        background: var(--backgroundCard);
+        @include cards;
+        transition: 0.25s ease background;
+
+        .days {
+            position: relative;
+        }
+
+        .arrow {
+            position: absolute;
+            bottom: -18px;
+        }
+
+        .pointsText {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 600;
+
+            &:last-of-type {
+                margin-top: 10px;
+            }
+
+            .points {
+                color: var(--colorTextLight);
+
+                &.sequence {
+                    color: #f7630c;
+                    font-weight: 700;
+
+                    .emoji {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        .calendar {
+            font-size: 13px;
+            margin: 25px 0 0 0;
+            font-weight: 700;
+            display: block;
+            color: var(--colorH)
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            @include betterImage;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 26px;
+            box-shadow: 0 5px 10px 2px var(--graySimple);
+        }
+    }
+    .card-title {
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--colorH);
+        font-size: 19px;
+        line-height: 30px;
+    }
+
+    .card-text {
+        font-size: 14px;
+        color: var(--colorH);
+    }
+
+    button {
+        &.button-form {
+            color: white;
+            background-color: var(--colorText);
+            width: 100%;
+            margin-top: 30px;
+            height: 100%;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            padding: 8px;
+            border-radius: 10px;
+            box-shadow: 0 0 0 red;
+        }
+
+        &.button-form:hover {
+            background-color: var(--colorTextHover);
+        }
+    }
+
+    a {
+        &.button-form {
+            color: var(--rightColor);
+            font-weight: 600;
+            background-color: var(--rightBackground);
+            width: 100%;
+            margin-top: 30px;
+            height: 100%;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            padding: 8px;
+            border-radius: 10px;
+            transition: .25s ease background-color, .25s ease color;
+        }
+
+        &.button-form:hover {
+            background-color: var(--colorTextHover);
+            color: var(--buttonColor);
+            transition: .25s ease background-color, .25s ease color;
+        }
+    }
+
+    ul {            
+        list-style-type: none;
+        padding: 0;
+        margin: 20px 0 0 0;
+        display: flex;
+        justify-content: space-between;
+
+        .today {
+            color: var(--colorTextLight)
+        }
+
+        li {
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .namedays {
+                color: var(--colorMute);
+                font-weight: 500;
+                font-size: 11px;
+            }
+
+            .ball {
+                margin-top: 3px;
+                height: 13px;
+                width: 13px;
+                background-color: var(--weekBall);
+                border-radius: 6px;
+
+                &.studied {
+                    background-color: var(--weekBallStudied);
+                    border: 3px solid var(--weekBallBorder);
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,176 @@
+@import '/src/style/index.scss';
+
+#forwho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--grayComponent);
+    .forwho-content {
+        max-width: calc(#{$maxScreen});
+        width: 100%;
+        padding: 70px $paddingContent 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        .forwho-title {
+            justify-self: flex-end;
+            h1 {
+                font-weight: 600;
+                margin-bottom: 90px;
+                & > span {
+                    color: var(--colorTextLight);
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .forwho-cards {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: start;
+            line-height: $pSpacing;
+
+            img {
+                @include betterImage;
+                max-width: 130px;
+                width: 100%;
+                margin-bottom: 23px;
+            }
+
+            h5 {
+                margin-bottom: 25px;
+                font-weight: 600;
+                color: var(--colorTextLight)
+            }
+
+            p {
+                display: inline-block;
+                margin: 0;
+                font-size: .94rem;
+            }           
+
+            & > div {
+                background-color: var(--cardSelected);
+                border-radius: 12px;
+                padding: 36px 30px;
+                max-width: 340px;
+                width: 100%;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    right: 20px;
+                    bottom: -65px;
+                    width: 75px;
+                    @include betterImage;
+                }
+
+                &:not(:nth-child(2)) {
+                    transform: translateY(40px);
+                }
+
+                &:nth-child(2) {
+                    margin: 0 30px;
+                    border: 2px solid var(--colorText);
+                    background-color: var(--cardHover);
+    
+                    /*
+                    & > .button {
+                        display: inline-block;
+                        margin-top: 30px;
+                        border-radius: 100px;
+                        background-color: var(--colorText);
+                        padding: 6px 15px;
+                        box-sizing: content-box;
+                        color: white;
+                        width: auto;
+                        font-weight: 400;
+                        font-size: .94rem;
+                        border: none;
+                        transition: all ease 0.25s;
+
+                        &:hover {
+                            background-color: var(--colorTextHover);
+                            transition: all ease 0.25s;
+                        }
+
+                        &:focus {
+                            background-color: var(--colorTextHover);
+                            box-shadow: 0 0 0 4px #b9d1f3;
+                            transition: none;
+                        }
+                    }
+                    */
+                }
+            }
+        }
+    }
+
+    @media (max-width: $maxScreen) {
+        .forwho-content {
+            padding: 110px 45px 180px;
+    
+            .forwho-cards {
+                & > div {         
+                    
+                    img {
+                        position: absolute;
+                        right: 20px;
+                        bottom: -40px;
+                        width: 40px;
+                        @include betterImage;
+                    }
+
+                    &:nth-child(2) {
+                        margin: 0px 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1050px) {
+        .forwho-content {
+            padding: 80px $paddingContent 80px;
+            
+            .forwho-title {
+                h1 {
+                    font-size: 1.8rem;
+                    margin-bottom: 60px;
+                    font-weight: 700;
+                }
+            }
+    
+            .forwho-cards {
+                justify-content: center;
+                flex-direction: column-reverse;
+                & > div {         
+                    
+                    img {
+                        position: absolute;
+                        right: 20px;
+                        bottom: -40px;
+                        width: 40px;
+                        @include betterImage;
+                    }
+
+                    &:not(:nth-child(2)) {
+                        transform: translateY(0px);
+                    }
+
+                    &:nth-child(2) {
+                        margin: 0px;
+                    }
+
+                    &:not(:nth-child(1)) {
+                        margin-bottom: 40px;   
+                    }
+                }
+            }
+        }
+    }
+}

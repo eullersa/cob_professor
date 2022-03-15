@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins';
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.emoji {
+    font-weight: normal;
+    display: inline-block;
+    margin-left: 2px;
+}
+
+/*
+// Purple
+:root {
+    --colorText: #5d34a8;
+    --colorTextLight: #b689ff;
+    --colorBackground: #e6d9ff;
+    --colorTextHover: #441d8d;
+    --colorTextOp: #54348f70;
+    --grayComponent: #f5f5f5;
+    --grayCard: #ececec;
+    --graySimple: #dddddd;
+    --colorH: #212529;
+    --colorMute: #6c757d;
+    --wrongAnswer: #b61818;
+    --colorParaph: ;
+    --menuList: ;
+}
+*/
+
+/*
+// Pink Adorable
+
+:root {
+    --colorText: #a83485;
+    --colorTextLight: #ff89e5;
+    --colorBackground: #ffd9f6;
+    --colorTextHover: #8d1d6b;
+    --colorTextOp: #8f347470;
+    --grayComponent: #f5f5f5;
+    --grayCard: #ececec;
+    --graySimple: #dddddd;
+    --colorH: #212529;
+    --colorMute: #6c757d;
+    --wrongAnswer: #b61818;
+    --colorParaph: ;
+    --menuList: ;
+}
+*/
+
+// Blue Adorable
+/*
+:root {
+    --colorText: #1d78ac;
+    --colorTextLight: #89daff;
+    --colorBackground: #d9dfff;
+    --colorTextHover: #13668d;
+    --colorTextOp: #205a9170;
+    --grayComponent: #f5f5f5;
+    --grayCard: #ececec;
+    --graySimple: #dddddd;
+    --colorH: #212529;
+    --colorMute: #6c757d;
+    --wrongAnswer: #b61818;
+    --rightAnswer: #34a853;
+    --light: #00000015;
+}
+*/
+
+/*
+
+// Green Light Blue Light
+
+:root {
+    --colorText: #0dc47e;
+    --colorTextLight: #6cffda;
+    --colorBackground: #d9fff7;
+    --colorTextHover: #0daaaf;
+    --colorTextOp: #208a9170;
+    --grayComponent: #f5f5f5;
+    --grayCard: #ececec;
+    --graySimple: #dddddd;
+    --colorH: #212529;
+    --colorMute: #6c757d;
+    --wrongAnswer: #b61818;
+    --colorParaph: ;
+    --menuList: ;
+}
+
+*/
+
+/*
+
+// Brown
+
+:root {
+    --colorText: #ce4915;
+    --colorTextLight: #ff966c;
+    --colorBackground: #ffe4d9;
+    --colorTextHover: #9c3809;
+    --colorTextOp: #91442070;
+    --grayComponent: #f5f5f5;
+    --grayCard: #ececec;
+    --graySimple: #dddddd;
+    --colorH: #212529;
+    --colorMute: #6c757d;
+    --wrongAnswer: #b61818;
+    --colorParaph: ;
+    --menuList: ;
+}
+
+*/
+
+/*
+// Red
+
+:root {
+    --colorText: #ce1524;
+    --colorTextLight: #ff6c85;
+    --colorBackground: #ffd9dc;
+    --colorTextHover: #9c0915;
+    --colorTextOp: #91202970;
+    --grayComponent: #f5f5f5;
+    --grayCard: #ececec;
+    --graySimple: #dddddd;
+    --colorH: #212529;
+    --colorMute: #6c757d;
+    --wrongAnswer: #b61818;
+    --colorParaph: ;
+    --menuList:;
+}
+*/
+
+// Green Default
+
+:root {
+    --colorText: #34a853;
+    --colorTextLight: #34a853;
+    --buttonColor: white;
+    --buttonText: #34a853;
+    --colorBackground: white;
+    --colorTextHover: #348F4c;
+    --weekBall: #ececec;
+    --weekBallBorder: #b9ffcc;
+    --weekBallStudied: #34a853;
+    --colorTextOp: #348F4c70;
+    --grayComponent: #F5F5F5;
+    --grayCard: #ececec;
+    --graySimple: #dddddd;
+    --backgroundCard: white;
+    --cardHover: white;
+    --colorH: #212529;
+    --colorMute: #6c757d;
+    --wrongAnswer: #b61818;
+    --light: #00000015;
+    --rightAnswer: #34a853;
+    --linkLive: #212529;
+    --input: white;
+    --inputBorder: #c0c0c0;
+    --textLP: white;
+    --cardSelected: #e0e0e0;
+    --colorP: #6c757d;
+    --backgroundSuccess: #b9ffcc;
+    --barLesson: white;
+    --barProgress: #ececec;
+    --choice: white;
+    --ballChoice: #c7c7c7;
+    --bottomLesson: white;
+    --lessonButtonText:white;
+    --lessonButtonBackColor:#34a853;
+    --rightColor: white;
+    --rightBackground: #34a853;
+}
+
+/*
+// Dark Mode
+:root {
+    --colorText: #1F1F1F;
+    --colorTextLight: #FFA000;
+    --buttonColor: #FFA000;
+    --buttonText: #1F1F1F;
+    --colorBackground: #121212;
+    --colorTextHover: #0e0e0e;
+    --weekBall: #0e0e0e;
+    --weekBallBorder: #1F1F1F;
+    --weekBallStudied: #FFA000;
+    --colorTextOp: #8f863470;
+    --grayComponent: #161616;
+    --grayCard: #1F1F1F;
+    --cardHover: #1a1a1a;
+    --backgroundCard: #161616;
+    --graySimple: #1a1a1a;
+    --colorH: #E0E0E0;
+    --colorMute: #6c757d;
+    --wrongAnswer: #b61818;
+    --light: #00000015;
+    --rightAnswer: #34a853;
+    --linkLive: #1F1F1F;
+    --input: #1F1F1F;
+    --inputBorder: #0e0e0e;
+    --textLP: #1F1F1F;
+    --cardSelected: #1F1F1F;
+    --colorP: #E0E0E0;
+    --backgroundSuccess: #E0E0E0;
+    --barLesson: #1F1F1F;
+    --barProgress: #121212;
+    --choice: #1F1F1F;
+    --ballChoice: #121212;
+    --bottomLesson: #1F1F1F;
+    --lessonButtonText: #1F1F1F;
+    --lessonButtonBackColor: #FFA000;
+}
+*/
+
+html {
+    scroll-behavior: smooth;
+    body {
+        height: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        padding:0;
+        margin:0;
+        color: var(--colorH);
+        background-color: var(--colorBackground);
+        transition: 0.25s ease background-color;
+    }
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--colorH);
+}
+
+p {
+    color: var(--colorMute);
+
+    &.normal {
+        color: var(--colorH);
+    }
+}
+
+.swiper-slide {
+    padding: 0 5px;
+}
+
+.btn {
+    color: black;
+}
+
+#root {
+    height: 100%;
+}
+
+@mixin betterImage {
+    image-rendering: -webkit-optimize-contrast;
+}
+
+@mixin cards {
+    box-shadow: 0 4px 10px 2px var(--light);
+}
+
+img {
+    @include betterImage;
+}
+
+.spaceContent {
+    margin-top: calc(32px + 13px * 2);
+}
+
+// Pages
+
+.signupPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--colorText);
+}
+
+$maxScreen: 1250px;
+$paddingContent: 30px;
+$menuBannerSpace: 45px;
+$pSpacing: 1.8rem;
+$transitionEffect: 0.3s ease all;
+$lineBar: 550px!important;
+

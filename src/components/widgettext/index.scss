@@ -1,0 +1,46 @@
+@import '/src/style/index.scss';
+
+@mixin border($color) {
+    box-shadow: 0 0 0px 2px $color;
+    -webkit-box-shadow: 0 0 0px 2px $color;
+    -moz-box-shadow: 0 0 0px 2px $color;
+}
+
+.widgetText {
+    padding: 36px;
+    width: 100%;
+    background-color: var(--grayCard);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease all;
+    margin-right: 18px;
+
+    //default
+    @include border(#ffffff00);
+
+    &:hover, &.selected {
+        @include border(var(--colorTextLight));
+        background-color: var(--cardHover);
+        cursor: pointer;
+        transition: 0.3s ease all;
+    }
+
+    .widgetTextContent {
+
+        h6 {
+            font-size: 1rem;
+            margin-bottom: 1.4rem;
+            font-weight: 600;
+            color: var(--colorTextLight);
+        }
+
+        // reset
+
+        p {
+            margin-bottom: 0;
+            line-height: $pSpacing;
+            font-size: 0.85rem;
+        }
+    }
+}

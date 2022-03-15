@@ -1,0 +1,21 @@
+#datas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+
+    .button {
+        display: inline-block;
+        border-radius: 10px;
+        background-color: var(--colorText);
+        padding: 10px 17px;
+        box-sizing: content-box;
+        color: white;
+        width: auto;
+        font-weight: 400;
+        font-size: 1.1rem;
+        border: none;
+        transition: all ease 0.25s;
+    }
+}

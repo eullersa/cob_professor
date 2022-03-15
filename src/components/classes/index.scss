@@ -1,0 +1,376 @@
+@import '/src/style/index.scss';
+
+#progress, #topics {
+    .lineCalc {
+        overflow: hidden;
+    }
+    
+    .classes {
+        margin-top: 30px;
+
+        .banner {
+            width: 100%;
+            background: #ff470f;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            padding: 30px 30px;
+            @include cards;
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 150px;
+                margin-right: 50px;
+                display: block;
+            }
+
+            .text {
+
+                display: flex;
+                flex-direction: column;
+
+                .button-form {
+                    display: inline-block;
+                    width: auto;
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                    padding: 10px 15px;
+                    justify-self: center;
+                    background: #F0C419;
+                    color: #212529!important;
+                    font-weight: 600;
+                    transition: 0.2s ease background;
+
+                    i {
+                        margin-right: 5px
+                    }
+                }
+                
+                .button-form:hover {
+                    background: #cfa90f;
+                    transition: 0.2s ease background;
+                }
+
+                span {
+                    color: white;
+                    display: block;
+                    &.title {
+                        font-size: 30px;
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                    }
+                    &.description {
+                        max-width: 420px;
+                        width: 100%;
+                        line-height: 28px;
+                    }
+                }
+
+            }
+        }
+
+        .currentLesson {
+            width: 100%;
+            background: var(--colorText);
+            margin-bottom: 25px;
+            border-radius: 10px;
+            padding: 30px 30px;
+            @include cards;
+            display: flex;
+            align-items: center;
+            transition: 0.25s ease background;
+
+            .img {
+                width: 200px;
+                height: 200px;
+                margin-right: 50px;
+                display: block;
+                background-position: center;
+                background-size: cover;
+                border-radius: 10px;
+            }
+
+            .text {
+
+                display: flex;
+                flex-direction: column;
+
+                .button-form {
+                    display: inline-block;
+                    width: auto;
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                    padding: 10px 15px;
+                    justify-self: center;
+                    background: #F0C419;
+                    color: #212529!important;
+                    font-weight: 600;
+                    transition: 0.2s ease background;
+
+                    i {
+                        margin-right: 5px
+                    }
+                }
+                
+                .button-form:hover {
+                    background: #cfa90f;
+                    transition: 0.2s ease background;
+                }
+
+                span {
+                    color: white;
+                    display: block;
+                    &.title {
+                        font-size: 30px;
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                    }
+                    &.description {
+                        max-width: 420px;
+                        width: 100%;
+                        line-height: 28px;
+                    }
+                }
+
+            }
+        }
+
+        .classItem:last-of-type {
+            .progressVertical {
+                .line {
+                    background-color: var(--colorBackground);
+                    display: block;
+                }
+            }
+        }
+
+        .classItem.complete {
+            .progressVertical {
+                .line {
+                    background-color: var(--rightAnswer);
+                    transition: 0.25s ease background-color;
+                }
+                .ball {
+                    background-color: var(--backgroundSuccess)!important;
+                    border-color: var(--rightAnswer)!important;
+                }
+            }            
+
+            &:last-of-type {
+                .progressVertical {
+                    .line {
+                        background-color: white;
+                    }
+                }
+            }
+
+            .class {
+                .progressBar {
+                    .bar {
+                        .line-bar {
+                            .line-conclusion {
+                                width: 100px;
+                                height: 7px;
+                                border-radius: 25px;
+                                background-color: var(--colorText);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        .classItem.next {
+
+            .next {
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+
+            .progressVertical {
+                .ball {
+                    background-color: #FF470F;
+                    border-color: #FF470F;
+                } 
+            }
+
+            .class {
+                background-color: var(--colorText);
+                @include cards;
+
+                &:hover {
+                    background-color: var(--colorText);
+                }
+
+                .image {
+                    width: 75px;
+                    height: 75px;
+                }
+            }
+        
+
+            i {
+                transform: translate(2px, -6px);
+                font-size: 21px;
+            }
+
+            .class {
+
+                .text {
+                    color: white;
+                    .title {
+                        font-size: 24px;
+                    }
+                }
+
+                .image {
+                    outline: 4px solid white;
+                    margin-right: 35px
+                }
+            }
+
+            .button {
+                display: flex;
+                flex: 1 0 0 1fr;
+                justify-content: flex-end;
+                align-items: center;
+
+                .button-form {
+                    display: inline;
+                    width: auto;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    padding: 18px 25px;
+                    background: var(--buttonColor);
+                    color: var(--buttonText);
+                    font-weight: 600;
+                    transition: 0.2s ease background;
+    
+                    i {
+                        margin-right: 5px
+                    }
+                }
+                
+                .button-form:hover {
+                    background: var(--buttonColor);
+                    transition: 0.2s ease background;
+                }
+            }
+        }
+
+        .classItem {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .progressVertical {
+                position: relative;
+
+                .ball {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 6px;
+                    background-color: var(--colorBackground);
+                    margin-right: 14px;
+                    border: 6px solid;
+                    border-color: var(--graySimple);
+                    box-shadow: 0 0 0 5px var(--colorBackground);
+                    transition: 0.25s ease background-color, 0.25s ease border-color, 0.25s ease box-shadow;
+                }
+
+                .line {
+                    width: 4px;
+                    height: $lineBar;
+                    background-color: var(--graySimple);
+                    margin-right: 14px;
+                    position: absolute;
+                    top: 10px;
+                    left: calc(50% - (14px / 2) - 2px);
+                    z-index: -1000;
+                    transition: 0.25s ease background-color;
+                }
+            }
+
+            .class {
+                width: 100%;
+                padding: 20px 25px;
+                display: flex;
+                align-items: center;
+                // border: 2px solid var(--colorText);
+                border-radius: 10px;
+                margin-bottom: 20px;
+                background-color: var(--grayCard);
+                color: var(--colorH);
+                text-decoration: none;
+                cursor: pointer;
+                transition: 0.2s ease background-color;
+
+                &:hover {
+                    background-color: var(--graySimple);
+                    transition: 0.2s ease background-color;
+                }
+
+                .text {
+                    .title {
+                        font-weight: 600;
+                        font-size: 18px;
+                    }
+                    .description {
+                        font-size: 14px;
+                        margin-top: 5px
+                    }
+                }
+        
+                .image {
+                    background-image: url(../../imgs/dashboard/meninaestudando.jpg);
+                    background-size: cover;
+                    background-position: center;
+                    width: 65px;
+                    height: 65px;
+                    border-radius: 10px;
+                    margin-right: 25px;
+                }
+
+                .progressBar {
+                    display: flex;
+                    flex: 1 0 0 1fr;
+                    align-items: flex-end;
+                    flex-direction: column;
+                    .bar {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        width: 120px;
+
+                        .conclusion {
+                            font-size: 13px;
+                            margin-top: 8px;
+                            font-weight: 500;
+                        }
+
+                        .line-bar {
+                            width: 100px;
+                            height: 7px;
+                            border-radius: 25px;
+                            background-color: var(--graySimple);
+                            transition: 0.25s ease background-color;                         
+
+                            .line-conclusion {
+                                width: 0px;
+                                height: 7px;
+                                border-radius: 25px;
+                                background-color: var(--colorText);
+                                transition: 0.25s ease background-color;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,117 @@
+@import '/src/style/index.scss';
+
+#marks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--grayComponent);
+    .marks-content {
+        max-width: calc(#{$maxScreen});
+        width: 100%;
+        padding: 90px $paddingContent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        .marks-title {
+            justify-self: flex-end;
+            h1 {
+                font-weight: 600;
+                margin-bottom: 90px;
+                & > span {
+                    color: var(--colorTextLight);
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .marks-cards {
+            .lineOne, .lineTwo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100px;
+                    width: 260px;
+                    img {
+                        height: 32px;
+                        margin: 0 20px;
+                    }                    
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1070px) {
+        .marks-content {
+
+            .marks-title {
+                h1 {
+                    margin-bottom: 60px;
+                }
+            }
+
+            .marks-cards {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .lineOne, .lineTwo {
+                    width: 300px;
+                    flex-wrap: wrap;
+                    div {
+                        width: 250px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 630px) {
+        .marks-content {    
+            .marks-cards {
+                display: flex;
+                justify-content: inherit;
+                align-items: inherit;
+                .lineOne, .lineTwo {
+                    flex-wrap: wrap;
+                    width: auto;
+                    div {
+                        width: 100%;
+                        max-width: 150px;
+                        img {
+                            height: 23px;
+                            margin: 0 20px;    
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 370px) {
+        .marks-content {    
+            .marks-cards {
+                display: flex;
+                flex-direction: column;
+                .lineOne, .lineTwo {
+                    flex-wrap: wrap;
+                    width: auto;
+                    div {
+                        width: 100%;
+                        max-width: 150px;
+                        height: 50px;
+                        img {
+                            height: 23px;
+                            margin: 0 10px;    
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
