@@ -1,0 +1,95 @@
+#datas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    margin-left:30px;
+
+    .logo-site {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        border-radius: 10px;
+        border: 3px solid var(--grayCard);
+    }
+
+    .button {
+        display: inline-block;
+        border-radius: 10px;
+        background-color: var(--lessonButtonBackColor);
+        padding: 10px 17px;
+        box-sizing: content-box;
+        color: var(--lessonButtonText);
+        width: auto;
+        font-weight: 500;
+        font-size: 1.1rem;
+        border: none;
+        transition: all ease 0.25s;
+    }
+
+    p.sites {
+        font-weight: 600;
+        color: var(--colorH);
+        font-size: 20px;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .course {
+        width: 100%;
+        max-width: 600px;
+        height: 100%;
+        background-color: red;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        padding: 15px 20px;
+        border: 2px solid var(--colorText);
+        background-color: var(--backgroundCard);
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            display: flex;
+            gap: 15px;
+            flex-direction: row;
+        }
+
+        .right {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .remove {
+                font-size: 22px;
+                font-weight: 600;
+                margin-bottom: 8px;
+                cursor: pointer;
+            }
+
+            .edit {
+                font-weight: 600;
+                font-size: 13px;
+                cursor: pointer;
+            }
+        }
+
+        .nameWo {
+            font-size: 23px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .origin {
+            font-weight: 500;
+            font-size: 12px;
+        }
+    }
+}

@@ -7,7 +7,7 @@ function Login() {
   return (
     <div className='signupPage'>
         <MiniMenu />
-        <Form text={'Faça o seu login'} message={'Digite o seu email e senha'} formType={'login'} validation={true} info={'Não possui uma conta?'} redirect={'Cadastre-se'} link={'/register'} button={'Entrar'}/>
+        <Form googleForm={{verification: true, button: 'Entrar com Google'}} text={'Faça o seu login'} message={'Digite o seu email e senha'} formType={'login'} validation={true} info={'Não possui uma conta?'} redirect={'Cadastre-se'} link={'/register'} button={'Entrar'}/>
         <MiniFooter />
     </div>
   )

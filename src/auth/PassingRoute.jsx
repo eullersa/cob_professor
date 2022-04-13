@@ -2,7 +2,7 @@ import { Authenticated } from "../apis/requests";
 import { Route, Redirect } from "react-router";
 
 const isNewUser = (props, Component) => {
-    if(Authenticated().role === 'student') {
+    if(Authenticated().role === 'teacher') {
         return (
             <Component {...props} />
         )

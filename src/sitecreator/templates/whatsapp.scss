@@ -1,0 +1,29 @@
+#page-view { 
+    #WhatsApp {
+        position: fixed;
+        z-index: 10;
+        bottom: -100px;
+        cursor: pointer;
+        img {
+            height: 55px;
+        }
+
+        animation-play-state: running;
+        animation-duration: 0.45s;
+        animation-name: whatsapp;
+        animation-timing-function: ease;
+        animation-direction:normal;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+
+        @keyframes whatsapp {
+            0% {
+                bottom: -100px;
+            }
+            100% {
+                bottom: 40px;
+            } 
+            
+        }
+    }
+}

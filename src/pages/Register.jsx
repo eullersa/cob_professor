@@ -6,7 +6,7 @@ function Register() {
   return (
     <div className='signupPage'>
         <MiniMenu />
-        <Form text={'Crie a sua conta'} formType={'register'} message={'Cadastre-se com email e senha'} validation={false} info={'Já tem uma conta?'} redirect={'Faça o login'} link={'/login'} button={'Cadastrar'} nameField={true}/>
+        <Form googleForm={{verification: true, button: 'Registrar com Google'}} text={'Crie a sua conta'} formType={'register'} message={'Cadastre-se com email e senha'} validation={false} info={'Já tem uma conta?'} redirect={'Faça o login'} link={'/login'} button={'Cadastrar'} nameField={true}/>
         <MiniFooter />
     </div>
   )

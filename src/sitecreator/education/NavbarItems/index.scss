@@ -1,0 +1,171 @@
+#page-view {
+
+    #menubanner {
+        font-weight: 500;
+        font-size: 20px;
+        width: 100%;
+        max-width: 950px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+        margin-top: 20px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        z-index: 10;
+
+        .logo-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            image-rendering: -webkit-optimize-contrast;
+        }
+    }
+
+    #WhatsApp {
+        position: fixed;
+        z-index: 10;
+        bottom: -100px;
+        cursor: pointer;
+        img {
+            height: 55px;
+        }
+
+        animation-play-state: running;
+        animation-duration: 0.45s;
+        animation-name: whatsapp;
+        animation-timing-function: ease;
+        animation-direction:normal;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+
+        @keyframes whatsapp {
+            0% {
+                bottom: -100px;
+            }
+            100% {
+                bottom: 40px;
+            } 
+            
+        }
+    }
+
+    .right {
+        ul {
+            display: flex;
+            gap: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .close {
+        position: fixed;
+        z-index: 12;
+        image-rendering: -webkit-optimize-contrast;
+        right: 20px;
+        top: -80px;
+        transition: 0.25s ease top;
+
+        &.open {
+            top: 30px;
+            transition: 0.25s ease top;
+        }
+
+    }
+
+
+    .slidemenu {
+        position: fixed;
+        z-index: 11;
+        min-height: 100vh;
+        width: 100%;
+        background: rgba(248, 248, 248, 0.75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 60px;
+        right: 100vw;
+        visibility: hidden;
+        transition: 0.25s ease right, 0.25s ease visibility;
+        font-weight: 700;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        &.open {
+            right: 0;
+            visibility: visible;
+            transition: 0.25s ease right, 0.25s ease visibility;
+        }
+
+        li {
+            list-style-type: none;
+            padding: 0;
+            font-size: 25px;
+            font-weight: 700;
+            color: #2c2c2c;
+            
+            .rows {
+                display: inline-block;
+                transform: translateX(-8px);
+                transition: 0.25s ease transform;
+            }
+
+            &:hover .rows {
+                display: inline-block;
+                transform: translateX(-3px);
+                transition: 0.25s ease transform;
+            }
+
+            &:hover {
+                color: black;
+            } 
+        }
+        
+
+        
+    }
+
+    @media screen and (max-width: 660px) {
+        .menu {
+            display: block;
+            cursor: pointer;
+        }
+
+        .buttonAccess {
+            display: none;
+        }
+
+        .right {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: 660px) {
+        .slidemenu {
+            display: none;
+        }
+
+        .close {
+            display: none;
+        }
+    }
+
+}

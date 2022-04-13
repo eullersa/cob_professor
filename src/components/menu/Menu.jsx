@@ -1,12 +1,13 @@
 import { Fragment, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Logo from '../logo/Logo';
-import { signout } from '../../apis/requests';
+import { signout, siteTemplatePost } from '../../apis/requests';
 import { windowTop } from '../../apis/requests'
 import { ChangeCourse } from '../../apis/requests';
 import { Authenticated } from '../../apis/requests';
 import { toggleBulb } from '../../apis/requests';
 import { setDarkMode } from '../../apis/requests';
+import './index.scss'
 
 function Menu({ items, links, longer = '', courses, coursesDrop, bulb}) {
 
@@ -33,13 +34,27 @@ function Menu({ items, links, longer = '', courses, coursesDrop, bulb}) {
     }
   }
 
+  const [save, setSave] = useState(false)
+
   const linksMap = (array) => {
     if(array) {
-      return array.map((li, id) => (
-        <a href={li.link} key={id} onClick={li.onclick !== undefined ? async() => {
-          await signout(handleClick)
-        } : () => {}} className={li.type}>{li.name}</a>
-      ))
+      return array.map((li, id) => {
+        if(li.link === 'creator') {
+          return (
+            <div style={{cursor: 'pointer'}} onClick={() => {
+              setSave(true)
+              siteTemplatePost(token, li.data, li.id)
+              .then(() => setSave(true))
+            }} key={id} className={li.type}>{!save ? li.name : 'carregando...'}</div>
+          )
+        } else {
+          return (
+            <Link to={li.link} key={id} onClick={li.onclick !== undefined ? async() => {
+              await signout(handleClick)
+            } : () => {}} className={li.type}>{li.name}</Link>
+          )
+        }
+      })
     } else {
       return null
     }
@@ -47,7 +62,7 @@ function Menu({ items, links, longer = '', courses, coursesDrop, bulb}) {
 
   return (
     <Fragment>
-    <div id='menu'>
+    <div id='menu' style={{fontFamily: 'Poppins'}}>
       <div className="menu-content">
         <Logo link='/dashboard' />
         <div className="menuToggle">

@@ -10,20 +10,7 @@ function Topics() {
 
     return (
         <Fragment>
-            <Menu bulb={true} items={[
-                {name: 'inicial', link: '/dashboard'},
-                {name: 'módulos', link: '/modulos'},
-                {name: 'ao vivo', link: '/live'},
-                {name: 'preços', link: '/precos'}
-            ]} links={[
-            {name: 'perfil', link: '/profile', type: 'button', function: 'signout'},
-            {name: 'sair', link: '', type: 'text', onclick: 'signout'}
-            ]} longer={'longer'} coursesDrop={coursesDrop} courses={true} />
-            <div className='spaceContent'></div>
-
             <AllTopics setCoursesDrop={setCoursesDrop} />
-
-            <Footer over={false} />
         </Fragment>
     )
 }

@@ -1,0 +1,23 @@
+#page-view {
+
+    .edit-widget {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        color: #34a853;
+        cursor: pointer;
+        z-index: 10000000000000000;
+        font-size: 30px;
+    }
+
+    .edit-widget.subir {
+        right: 10px;
+        bottom: 46px;
+    }
+
+    .edit-widget.descer {
+        right: 10px;
+        bottom: -46px;
+    }
+
+}

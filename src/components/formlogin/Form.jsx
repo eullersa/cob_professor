@@ -1,18 +1,23 @@
 import { Fragment, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { register, login, authenticate } from '../../apis/requests'
+import { Link, Redirect, useParams } from 'react-router-dom';
+import { register, login, authenticate, resetPassword, insertNewPassword } from '../../apis/requests'
+import { GoogleLogin } from 'react-google-login';
 
-function Form({text, validation, info, redirect, button, link, message, passwordField = true, nameField = false, reset='/reset', formType}) {
+function Form({googleForm, text, validation, info, redirect, button, link, message, passwordField = true, emailField = true, confirmPasswordField = false, nameField = false, reset='/reset', formType}) {
+
+  const { id } = useParams()
 
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [redirectReferrer, setRedirect] = useState(false)
+  const [messageR, setMessage] = useState('')
   const [success, setSuccess] = useState(undefined)
   const [data, setData] = useState({
     ...(nameField === true ? {name: ''} : undefined),
-    email: '',
+    ...(emailField === true ? {email: ''} : undefined),
     ...(passwordField === true ? {password: ''} : undefined),
-    origin: `${window.location.origin.replace("https://", "").replace("http://", "")}`
+    ...(confirmPasswordField === true ? {confirmPassword: ''} : undefined),
+    role: 'teacher'
   })
 
   const forgotPassword = (validation) => {
@@ -38,6 +43,19 @@ function Form({text, validation, info, redirect, button, link, message, password
     }
   }
 
+  const confirmPassword = (validation) => {
+    if(validation === true) {
+      return (
+        <div className="form-group">
+          <i className="fas fa-lock"></i>
+          <input type="password" onChange={handleChange('confirmPassword')} className="form-control last" id="exampleInputPassword2" placeholder="Confirme sua senha" />
+        </div>
+      )
+    } else {
+      return null
+    }
+  }
+
   const name = (validation) => {
     if(validation === true) {
       return (
@@ -47,7 +65,64 @@ function Form({text, validation, info, redirect, button, link, message, password
         </div>
       )
     } else {
+      return null
+    }
+  }
 
+  const email = (validation) => {
+    if(validation === true) {
+      return (
+        <div className="form-group">
+          <i className="fas fa-envelope"></i>
+          <input type="email" onChange={handleChange('email')} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" required />
+        </div>
+      )
+    } else {
+      return null
+    }
+  }
+
+  const responseGoogle = async(response) => {
+    await fetch(`${process.env.REACT_APP_SERVER_API}/user/google/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({idToken: response.tokenId})
+    })
+    .then(response => response.json())
+    .then(response => {
+      if(response.success === false) {
+        setSuccess(false)
+        setLoading(false)
+        setError(response.message)
+      } else {
+        setSuccess(true)
+        setMessage(response?.message)
+        delete response.success
+        authenticate(response, () => {
+          setRedirect(true)
+        })
+      }
+    })
+    .catch(error => console.error(error))
+  }
+  
+  const google = (validation, button) => {
+    if(validation === true) {
+      return (
+        <GoogleLogin
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          render={renderProps => (
+            <button onClick={renderProps.onClick} disabled={renderProps.disabled} type="button" className="btn btn-form google"><span className="fa-brands fa-google" style={{margin: 0, padding: 0, fontSize: 20}}></span> {button}</button>
+          )}
+          cookiePolicy={'single_host_origin'}
+        />
+      )
+    } else {
       return null
     }
   }
@@ -56,7 +131,7 @@ function Form({text, validation, info, redirect, button, link, message, password
     if(validation === true) {
       return (
         <div className="alert alert-success" role="alert">
-          Usuário criado com sucesso!
+          {messageR}
         </div>
       )     
     } else if (validation === false) {
@@ -82,6 +157,7 @@ function Form({text, validation, info, redirect, button, link, message, password
             setError(response.message)
           } else {
             setSuccess(true)
+            setMessage(response?.message)
             delete response.success
             authenticate(response, () => {
               setRedirect(true)
@@ -99,9 +175,36 @@ function Form({text, validation, info, redirect, button, link, message, password
           } else {
             setSuccess(true)
             setLoading(false)
+            setMessage(response?.message)
           }
         })
         .catch(error => console.error(error))
+    } else if (type === 'reset') {
+      resetPassword(data)
+        .then(response => {
+          if(response.success === false) {
+            setSuccess(false)
+            setLoading(false)
+            setError(response.message)
+          } else {
+            setSuccess(true)
+            setLoading(false)
+            setMessage(response?.message)
+          }
+        })
+    } else if (type === 'insertnewpassword') {
+      insertNewPassword(id, data)
+        .then(response => {
+          if(response.success === false) {
+            setSuccess(false)
+            setLoading(false)
+            setError(response.message)
+          } else {
+            setSuccess(true)
+            setLoading(false)
+            setMessage(response?.message)
+          }
+        })
     }
   }
 
@@ -135,15 +238,13 @@ function Form({text, validation, info, redirect, button, link, message, password
             {/* Formulário */}
             <form onSubmit={handleSubmit(formType)}>
               {name(nameField)}
-              <div className="form-group">
-                <i className="fas fa-envelope"></i>
-                <input type="email" onChange={handleChange('email')} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" />
-              </div>
+              {email(emailField)}
               {password(passwordField)}
+              {confirmPassword(confirmPasswordField)}
               {forgotPassword(validation)}
               <button type="submit" className="btn btn-form">{button}</button>
+              {google(googleForm?.verification, googleForm?.button)}
             </form>
-
           </div>
         </div>
 

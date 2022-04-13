@@ -1,0 +1,99 @@
+#page-view {
+
+    #banner {
+        width: 100%;
+        height: 830px;
+
+        @media screen and (max-width: 660px) {
+            height: 655px;        
+        }
+
+        .bannerMenu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .bannerMenus {
+                font-weight: 500;
+                font-size: 20px;
+                width: 100%;
+                max-width: 950px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: auto;
+                margin-top: 20px;
+                padding: 0 20px;
+                box-sizing: border-box;
+                gap: 30px;
+
+                @media screen and (max-width: 660px) {
+                    flex-wrap: wrap-reverse;
+                    gap: 0;
+                }
+
+                .content {
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+                }
+
+                .info {
+                    text-align: center;
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    color: white;
+
+                    img {
+                        image-rendering: -webkit-optimize-contrast;
+                    }
+
+                    h1 {
+                        font-size: 45px;
+                        margin-bottom: 18px;
+                    }
+
+                    button {
+                        margin-block-start: 1em;
+                        border: none;
+                        background-color: white;
+                        font-size: 22px;
+                        font-weight: 700;
+                        padding: 10px 34px;
+                        border-radius: 15px;
+                        cursor: pointer;
+                    }
+
+                    @media screen and (max-width: 660px) {
+                        & {
+                            h1 {
+                                font-size: 28px;
+                                margin-bottom: 18px;
+                                margin-top: 0;
+                            }
+
+                            p {
+                                font-size: 18px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+                
+                .content {
+                    height: 100%;
+                    width: 100%;
+                    max-width: 330px;
+                    background-color: white;
+                    border-radius: 15px;
+
+                    overflow: hidden;
+                }
+            }
+
+        }
+    }
+
+}

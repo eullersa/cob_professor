@@ -1,0 +1,40 @@
+.photoAdd {
+    font-weight: 600;
+    color: var(--colorH);
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.profile-photo {
+    width: 100%;
+    height: 120px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.prices {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: white;
+    margin-bottom: 15px;
+    max-width: 300px;
+    .blockPrice {
+        background-color: var(--colorText);
+        padding: 8px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+
+        .delete {
+            margin-left: 3px;
+        }
+    }
+}

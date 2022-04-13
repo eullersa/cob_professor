@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router";
 
 function PrivateRoute({component: Component, ...rest}) {
     return (
-        <Route {...rest} render={(props) => Authenticated().role === 'student' ? (
+        <Route {...rest} render={(props) => Authenticated().role === 'teacher' ? (
             <Redirect to={{pathname: '/dashboard', state: {from: props.location}}} />
         ) : <Component {...props} /> } />
     )

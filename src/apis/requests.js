@@ -1,4 +1,5 @@
 export const API = process.env.REACT_APP_SERVER_API;
+export const FILES = process.env.REACT_APP_SERVER_API_FILES;
 
 // windows UP
 
@@ -32,11 +33,123 @@ export const login = async(body) => {
     .then(response => response.json())
 }
 
+export const modelCreate = async(token, body, model) => {
+    return await fetch(`${API}/${model}/create`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+}
+
+export const modelUpdate = async(token, body, name, model) => {
+    return await fetch(`${API}/${model}/update/${name}`,{
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+}
+
+export const modelDelete = async(name, model, token) => {
+    return await fetch(`${API}/${model}/remove/${name}`, {
+        method: "DELETE",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    })
+    .then(data => data.json())
+}
+
+export const sendImage = async(image, type, model, token, body) => {
+    return await fetch(`${FILES}/photo/${model}/create`, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({'image': image, 'type': type, ...body})
+    })
+    .then(data => data.json())
+}
+
+export const deleteImage = async(name, model, token) => {
+    return await fetch(`${FILES}/photo/${model}/delete/${name}`, {
+        method: "DELETE",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    })
+    .then(data => data.json())
+}
+
+export const siteGetAll = async(token) => {
+    return await fetch(`${API}/site/all`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+}
+
+export const courseGetAll = async(token, site) => {
+    return await fetch(`${API}/class/course/get?site=${site}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+}
+
+export const moduleGetAll = async(token, site) => {
+    return await fetch(`${API}/class/module/get/${site}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+}
+
+export const lessonGetAll = async(token, site) => {
+    return await fetch(`${API}/class/lesson/get/${site}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+}
+
 export const signout = async(next) => {
     if(typeof window !== 'undefined') {
         await toggleBulb(undefined, false)
         await localStorage.removeItem('modeview')
         await localStorage.removeItem('jwt')
+        await localStorage.removeItem('image')
         await next()
         await fetch(`${API}/user/signout`, {
             method: 'GET',
@@ -48,6 +161,7 @@ export const signout = async(next) => {
 export const authenticate = (data, redirect) => {
     if(typeof window !== 'undefined') {
         localStorage.setItem('jwt', JSON.stringify(data))
+        localStorage.setItem('image', JSON.stringify({image: data.image}))
         windowTop()
         redirect()
     }
@@ -474,4 +588,158 @@ export const GetDarkMode = () => {
             return false
         }
     }
+}
+
+// Site Template
+
+export const siteTemplatePost = async(token, site, id) => {
+    return await fetch(`${FILES}/sitetemplate/save/${id}`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(site)
+    })
+    .then(response => response.json())
+}
+
+export const siteTemplateGet = async(id) => {
+    return await fetch(`${FILES}/sitetemplate/get/${id}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        }
+    })
+    .then(response => response.json())
+}
+
+/// Price
+
+export const priceCreate = async(token, body) => {
+    return await fetch(`${API}/price/create`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+}
+
+export const pricesGet = async(token, body) => {
+    return await fetch(`${API}/price/by/course/${body}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+}
+
+export const priceDelete = async(token, body) => {
+    return await fetch(`${API}/price/delete/${body}`,{
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+}
+
+/// Price
+
+export const liveCreate = async(token, body) => {
+    return await fetch(`${API}/live/create`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+}
+
+export const liveGet = async(token, body) => {
+    return await fetch(`${API}/live/by/course/${body}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+}
+
+export const liveDelete = async(token, body) => {
+    return await fetch(`${API}/live/delete/${body}`,{
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+}
+
+// Theme
+
+export const themeGet = async(body) => {
+    return await fetch(`${API}/theme/get/${body}`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        }
+    })
+    .then(response => response.json())
+}
+
+export const themeChange = async(token, body) => {
+    return await fetch(`${API}/theme/change`,{
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+}
+
+export const resetPassword = async(body) => {
+    return await fetch(`${API}/user/teacher/password/forgot`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+}
+
+export const insertNewPassword = async(id, body) => {
+    return await fetch(`${API}/user/password/reset/${id}`,{
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
 }

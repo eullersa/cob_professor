@@ -124,6 +124,21 @@
         background-color: var(--colorTextHover);
     }
 
+    .btn-form.google {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        background-color: #EA4335;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .btn-form.google:hover {
+        background-color: #c73629;
+    }
+
     a.link {
         color:inherit;
     }
